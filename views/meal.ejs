@@ -1,0 +1,25 @@
+<%- include("partials/header") %>
+
+<h1><%= recipe.title %></h1>
+
+<% if (recipe.image) { %>
+  <img src="<%= recipe.image %>" alt="<%= recipe.title %>" style="max-width: 400px;">
+<% } %>
+
+<h2>Ingredients</h2>
+<% if (recipe.ingredients && recipe.ingredients.length > 0) { %>
+  <pre><%= recipe.ingredients %></pre>
+<% } else { %>
+  <p>No ingredients listed.</p>
+<% } %>
+
+<h2>Instructions</h2>
+<% if (recipe.directions && recipe.directions.length > 0) { %>
+  <pre><%= recipe.directions %></pre>
+<% } else { %>
+  <p>No instructions available.</p>
+<% } %>
+
+<a href="/">← Back to Meal Plan</a>
+
+<%- include("partials/footer") %>

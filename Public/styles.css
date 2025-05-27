@@ -1,0 +1,190 @@
+/* ======= GLOBAL RESET & FONTS ======= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #f9f9f9, #d0e8ff, #ffe3e3);
+  min-height: 100vh;
+  padding: 30px 20px;
+  color: #2c3e50;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* ======= NAVIGATION ======= */
+nav {
+  margin-bottom: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff6f61;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #e0544f;
+  transform: scale(1.05);
+}
+
+/* ======= HEADINGS & TEXT ======= */
+h1, h2, h3 {
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+p {
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+/* ======= MEAL DETAIL STYLING ======= */
+.recipe-detail {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 40px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.recipe-detail ul {
+  list-style: disc;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.recipe-detail p {
+  text-align: justify;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  white-space: pre-line;
+  overflow-wrap: break-word;
+}
+
+/* ======= CARDS ======= */
+.card {
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(to bottom, #ffffff, #f4f8fb);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+.card-title a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.card-title a:hover {
+  color: #007bff;
+}
+
+/* ======= BUTTONS & FORMS ======= */
+button, .btn {
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-size: 1rem;
+}
+
+input[type="text"], select {
+  border-radius: 6px;
+  padding: 10px 14px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+form {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* ======= LISTS ======= */
+ul.list-group {
+  margin-top: 24px;
+}
+
+.list-group-item {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  background: #fefefe;
+  padding: 14px 18px;
+  font-size: 1rem;
+}
+
+/* ======= FLEX WRAPPING FOR MEAL CARDS ======= */
+.d-flex.flex-wrap.gap-3 {
+  justify-content: center;
+  row-gap: 2.5rem;
+  column-gap: 2rem;
+  padding-bottom: 40px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ======= RESPONSIVENESS ======= */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .btn, button, select, input[type="text"] {
+    width: 100%;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .recipe-detail {
+    padding: 24px;
+  }
+}

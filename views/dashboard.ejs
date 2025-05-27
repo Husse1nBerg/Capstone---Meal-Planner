@@ -1,0 +1,33 @@
+
+<%- include("partials/header") %>
+
+<h1>Your Weekly Dashboard</h1>
+
+<% for (let day in weeklyPlan) { %>
+  <h2 class="mt-4"><%= day %></h2>
+
+  <% if (weeklyPlan[day].length > 0) { %>
+    <div class="d-flex flex-wrap gap-3">
+      <% weeklyPlan[day].forEach(meal => { %>
+        <div class="card shadow-sm p-3" style="min-width: 250px; max-width: 300px; flex: 1 1 auto;">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="/meal/<%= meal.index %>"><%= meal.data.title %></a>
+            </h5>
+            <form action="/remove-from-plan" method="POST" class="mt-2">
+              <input type="hidden" name="id" value="<%= meal.index %>">
+              <input type="hidden" name="day" value="<%= day %>">
+              <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+            </form>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p class="text-muted">No meals planned for <%= day %>.</p>
+  <% } %>
+<% } %>
+
+<a href="/" class="btn btn-outline-secondary mt-4">← Back to Meal Planner</a>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,18 @@
+<%- include("partials/header") %>
+
+<h1>Grocery List</h1>
+
+<% if (ingredients.length > 0) { %>
+  <ul class="list-group mb-4">
+    <% ingredients.forEach(item => { %>
+      <li class="list-group-item"><%= item %></li>
+    <% }) %>
+  </ul>
+<% } else { %>
+  <p class="text-muted">Your grocery list is empty. Add meals first.</p>
+<% } %>
+
+<a href="/grocery/edit" class="btn btn-outline-primary me-2">Edit List</a>
+<a href="/dashboard" class="btn btn-outline-secondary">← Back to Dashboard</a>
+
+<%- include("partials/footer") %>

@@ -1,0 +1,63 @@
+<%- include("partials/header") %>
+
+<h1>Weekly Meal Plan</h1>
+
+<form action="/" method="GET" class="mb-3 d-flex flex-wrap gap-2">
+  <input type="text" name="q" class="form-control" placeholder="Search by tag or keyword..." value="<%= searchTerm %>">
+  <button type="submit" class="btn btn-secondary">Filter</button>
+</form>
+
+<% if (session.message) { %>
+  <div class="alert alert-info"><%= session.message %></div>
+  <% session.message = null; %>
+<% } %>
+
+<form action="/clear-plan" method="POST" class="mb-4">
+  <button type="submit" class="btn btn-outline-danger">Clear Weekly Plan</button>
+</form>
+
+<div class="d-flex flex-wrap gap-3">
+  <% recipes.forEach((recipe, index) => { %>
+    <div class="card shadow-sm p-3" style="min-width: 250px; max-width: 300px; flex: 1 1 auto;">
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="/meal/<%= index %>"><%= recipe.title %></a>
+        </h5>
+
+        <% 
+          let alreadyAdded = false;
+          if (session.mealPlan) {
+            for (let day in session.mealPlan) {
+              if (session.mealPlan[day].includes(index)) {
+                alreadyAdded = day;
+                break;
+              }
+            }
+          }
+        %>
+
+        <% if (alreadyAdded) { %>
+          <p class="text-success">✔ Already added to <%= alreadyAdded %></p>
+        <% } else { %>
+          <form action="/add-to-plan" method="POST" class="d-flex flex-column gap-2">
+            <input type="hidden" name="id" value="<%= index %>">
+            <select name="day" class="form-select" required>
+              <option value="" disabled selected>Select a day</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+              <option>Sunday</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+        <% } %>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<%- include("partials/footer") %>
+
